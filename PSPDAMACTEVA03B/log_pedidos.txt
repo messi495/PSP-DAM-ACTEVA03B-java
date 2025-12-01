@@ -1,0 +1,8 @@
+=== LOG DE PEDIDOS - INICIO: 2025-10-21 18:24:38 ===
+
+[2025-10-21 18:24:39] Cocinero 3 procesó Pedido #3: Gazpacho Andaluz
+[2025-10-21 18:24:39] Cocinero 2 procesó Pedido #2: Tortilla de Patatas
+[2025-10-21 18:24:40] Cocinero 1 procesó Pedido #1: Paella Valenciana
+[2025-10-21 18:24:40] Cocinero 2 procesó Pedido #5: Croquetas de Jamón
+[2025-10-21 18:24:41] Cocinero 3 procesó Pedido #4: Pulpo a la Gallega
+[2025-10-21 18:24:42] Cocinero 1 procesó Pedido #6: Fabada Asturiana
