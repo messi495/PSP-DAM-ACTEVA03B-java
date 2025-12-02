@@ -82,7 +82,7 @@ Elimina el log previo.
 
 Crea uno nuevo con fecha/hora usando LocalDateTime y DateTimeFormatter.
 
-Requisitos
+## Requisitos
 
 Java 8 o superior
 
