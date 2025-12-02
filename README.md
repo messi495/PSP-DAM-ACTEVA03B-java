@@ -3,7 +3,7 @@
 
 Este proyecto reproduce el funcionamiento de una cocina de restaurante usando hilos en Java. Tres cocineros comparten una lista de pedidos, los procesan de forma sincronizada y registran cada acción en un archivo de log.
 
-Descripción general
+## Descripción general
 
 La clase Cocina genera una lista compartida de Pedido y lanza 3 hilos Cocinero.
 
