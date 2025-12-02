@@ -1,36 +1,49 @@
-# PSP-DAM-ACTEVA03B-java
+PSP-DAM-ACTEVA03B-java
 Simulación de cocina con hilos en Java
-Este proyecto simula el trabajo de una cocina de restaurante usando hilos en Java. Varios cocineros comparten una lista de pedidos, los van sacando de forma segura y registran el trabajo en un archivo de log.
+
+Este proyecto reproduce el funcionamiento de una cocina de restaurante usando hilos en Java. Tres cocineros comparten una lista de pedidos, los procesan de forma sincronizada y registran cada acción en un archivo de log.
 
 Descripción general
-Cocina crea una lista de Pedido y arranca 3 hilos Cocinero.
 
-Cada Cocinero toma pedidos de la lista compartida (con synchronized), los “prepara” durante 1–3 segundos y escribe en consola y en un archivo log_pedidos.txt.
+La clase Cocina genera una lista compartida de Pedido y lanza 3 hilos Cocinero.
 
-El programa termina cuando todos los pedidos han sido procesados y todos los hilos finalizan.
+Cada Cocinero:
+
+Extrae pedidos de la lista usando synchronized.
+
+“Prepara” cada pedido con un tiempo aleatorio entre 1 y 3 segundos.
+
+Muestra avances por consola.
+
+Registra la actividad en el archivo log_pedidos.txt.
+
+El programa finaliza cuando no quedan pedidos por procesar y los hilos terminan su ejecución.
 
 Estructura de clases (paquete restaurante)
-Pedido
+## Pedido
 
-Atributos: id, nombrePlato.
+Atributos: id, nombrePlato
+Representa un pedido individual.
+toString() devuelve:
+Pedido #id: nombrePlato
 
-Representa un pedido de cocina.
+## Cocinero (extends Thread)
 
-toString() devuelve: Pedido #id: nombrePlato.
+Atributos:
 
-Cocinero (extiende Thread)
+nombre
 
-Atributos: nombre, List<Pedido> listaPedidos.
+List<Pedido> listaPedidos
 
-En run():
+run():
 
-Extrae pedidos de listaPedidos dentro de un bloque synchronized.
+Extrae un pedido desde listaPedidos dentro de un bloque synchronized.
 
 Llama a prepararPedido(pedido).
 
 prepararPedido(Pedido):
 
-Muestra por consola que empieza y termina el pedido.
+Muestra cuándo empieza y termina la preparación.
 
 Duerme entre 1 y 3 segundos.
 
@@ -38,53 +51,55 @@ Llama a registrarEnLog(pedido).
 
 registrarEnLog(Pedido):
 
-Escribe una línea con fecha, hora, cocinero y pedido en log_pedidos.txt usando sincronización sobre ARCHIVO_LOG.
+Escribe fecha, hora, cocinero y pedido en log_pedidos.txt.
 
-Cocina (clase principal)
+Usa sincronización sobre la constante ARCHIVO_LOG.
+
+## Cocina (clase principal)
 
 Constantes:
+ARCHIVO_LOG = "log_pedidos.txt"
 
-ARCHIVO_LOG = "log_pedidos.txt".
+main():
 
-main(String[] args):
+Llama a inicializarLog() para limpiar y crear el log con cabecera.
 
-Llama a inicializarLog() (borra el archivo si existe y escribe cabecera).
+Crea la lista compartida de Pedido.
 
-Crea la lista compartida de Pedido con varios platos.
+Muestra “Inicio del servicio”.
 
-Muestra inicio del servicio.
+Crea tres hilos Cocinero (1, 2 y 3).
 
-Crea 3 instancias Cocinero (Cocinero 1, 2 y 3) con la misma lista.
+Arranca los hilos con start().
 
-Llama a start() en cada hilo.
+Usa join() para esperar a que finalicen.
 
-Espera con join() a que terminen.
-
-Muestra mensaje final de que todos los pedidos han sido procesados.
+Muestra un mensaje final indicando que no quedan pedidos.
 
 inicializarLog():
 
-Elimina el log antiguo (si existe) y crea uno nuevo con una línea de inicio con LocalDateTime y DateTimeFormatter.
+Elimina el log previo.
+
+Crea uno nuevo con fecha/hora usando LocalDateTime y DateTimeFormatter.
 
 Requisitos
-Java 8 o superior.
 
-Todas las clases en el paquete restaurante (carpeta restaurante/).
+Java 8 o superior
+
+Todas las clases dentro del paquete restaurante/
 
 Compilación
-Desde el directorio raíz del proyecto:
-
-bash
 javac restaurante/*.java
+
 Ejecución
-bash
 java restaurante.Cocina
-Se mostrará en consola:
 
-Inicio del servicio.
+Salida esperada
 
-Qué cocinero está preparando y completando cada Pedido.
+Mensaje de inicio del servicio.
+
+El nombre del cocinero que prepara cada pedido.
 
 Mensaje final cuando no quedan pedidos.
 
-En el archivo log_pedidos.txt se registran los pedidos procesados con marca de tiempo y nombre del cocinero.
+Archivo log_pedidos.txt con todas las preparaciones registradas.
