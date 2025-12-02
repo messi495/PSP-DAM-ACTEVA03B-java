@@ -1,5 +1,5 @@
-PSP-DAM-ACTEVA03B-java
-Simulación de cocina con hilos en Java
+# PSP-DAM-ACTEVA03B-java
+## Simulación de cocina con hilos en Java
 
 Este proyecto reproduce el funcionamiento de una cocina de restaurante usando hilos en Java. Tres cocineros comparten una lista de pedidos, los procesan de forma sincronizada y registran cada acción en un archivo de log.
 
