@@ -94,7 +94,7 @@ javac restaurante/*.java
 Ejecución
 java restaurante.Cocina
 
-Salida esperada
+## Salida esperada
 
 Mensaje de inicio del servicio.
 
